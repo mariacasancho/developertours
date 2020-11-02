@@ -6,7 +6,6 @@ import Hotels from "./modules/Hotels";
 
 Vue.use(Vuex);
 
-console.log(Locations);
 export default new Vuex.Store({
     modules: {
         Hotels,

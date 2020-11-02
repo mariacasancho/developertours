@@ -3,8 +3,10 @@
         <h1>This is an about page</h1>
         <button @click="getLoca()">get locations</button>
         <div v-if="locationslist">{{locationslist}}</div>
-        <button @click="getHotel()">get Hotels</button>
+        <button @click="getHotelList('058aee29-cf03-497b-beeb-d14db6c6acbd')">get Hotels</button>
         <div v-if="hotelslist">{{hotelslist}}</div>
+        <button @click="getHotel('1f626c96-34a4-4c38-bf9a-e22c74337680')">get Hotel</button>
+        <div v-if="hotelslist">{{hotelDetail}}</div>
     </div>
 </template>
 
@@ -31,11 +33,22 @@ export default class About extends Vue {
     private hotelslist!: Array<any>;
 
     @Hotels.Action
-    private getHotels!: () => Array<any>;
+    private getHotels!: (location: string) => Array<any>;
 
-    getHotel() {
+    getHotelList(location: string) {
         console.log("gethotel");
-        this.getHotels();
+        this.getHotels(location);
+    }
+
+    @Hotels.State("hotel")
+    private hotelDetail!: any;
+
+    @Hotels.Action
+    private getHotel!: (id: string) => Array<any>;
+
+    getHo(id: string) {
+        console.log("gethotel");
+        this.getHotel(id);
     }
 }
 </script>
