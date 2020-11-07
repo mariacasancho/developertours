@@ -1,5 +1,11 @@
 <template>
-    <b-table :data="tableData" :columns="columns" :narrowed="true" :mobile-cards="false">
+    <b-table
+        :data="tableData"
+        :columns="columns"
+        :narrowed="true"
+        :mobile-cards="false"
+        @click="onRowClick"
+    >
         <template slot="header"></template>
     </b-table>
 </template>
@@ -25,6 +31,11 @@ export default class Table extends Vue {
 
     get tableData() {
         return this.data;
+    }
+
+    onRowClick(data: any) {
+        console.log("click", data);
+        this.$router.push({ name: "Hotel", params: { id: data.id } });
     }
 }
 </script>

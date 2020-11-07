@@ -52,7 +52,14 @@
     "parserOptions": {
       "ecmaVersion": 2020
     },
-    "rules": {},
+    "rules": {
+      "camelcase": [
+        "warn",
+        {
+          "properties": "never"
+        }
+      ]
+    },
     "overrides": [
       {
         "files": [

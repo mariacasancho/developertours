@@ -7,11 +7,20 @@ class Hotels extends VuexModule {
   public hotel: Hotel = {
     id: '',
     name: '',
-    description: ''
+    description: '',
+    images: [],
+    amenities: {
+      breakfast_included: false,
+      free_cancellation: false,
+      free_parking: false,
+      fitness: false,
+      pool: false,
+      free_wifi: false,
+    }
   };
 
   @Mutation
-  public getHotelsSuccess(getHotel: any): void {
+  public getHotelsSuccess(getHotel: Array<Hotel>): void {
     this.hotels = getHotel;
   }
 
@@ -21,7 +30,7 @@ class Hotels extends VuexModule {
   }
 
   @Mutation
-  public getHotelSuccess(getHotel: any): void {
+  public getHotelSuccess(getHotel: Hotel): void {
     this.hotel = getHotel;
   }
 
@@ -30,7 +39,16 @@ class Hotels extends VuexModule {
     this.hotel = {
       id: '',
       name: '',
-      description: ''
+      description: '',
+      images: [],
+      amenities: {
+        breakfast_included: false,
+        free_cancellation: false,
+        free_parking: false,
+        fitness: false,
+        pool: false,
+        free_wifi: false,
+      }
     };
   }
 
@@ -57,8 +75,24 @@ class Hotels extends VuexModule {
   getHotel(id: string): void {
     HotelApi.getHotel(id).then(
       response => {
+        // const hoteldata: Hotel = {
+        //   amenities: {
+        //     breakfast_included: response.data.amenities.breakfast_included,
+        //     freeCancellation: response.data.amenities.free_cancellation,
+        //     freeParking: response.data.amenities.free_parking,
+        //     fitness: response.data.amenities.fitness,
+        //     pool: response.data.amenities.pool,
+        //     freeWifi: response.data.amenities.free_wifi
+        //   },
+        //   id: response.data.id,
+        //   name: response.data.name,
+        //   description: response.data.description,
+        //   images: response.data.images
+        // };
+
+        // console.log('gethotel', hoteldata);
         this.context.commit('getHotelSuccess', response.data);
-        return Promise.resolve(response);
+        return Promise.resolve(response.data);
       },
       error => {
         this.context.commit('getHotelFailure');

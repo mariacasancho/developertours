@@ -18,7 +18,7 @@
 import { Component, Vue, Prop, Watch } from "vue-property-decorator";
 
 @Component
-export default class Table extends Vue {
+export default class Autocomplete extends Vue {
     @Prop() private data!: any[];
     @Prop() public selectedLocation = "";
 
