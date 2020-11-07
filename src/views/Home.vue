@@ -1,19 +1,32 @@
 <template>
     <div class="home">
-        <img alt="Vue logo" src="../assets/logo.png" />
-        <div>Paco</div>
-        <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
+        <SearchBar />
+        <Table v-bind:data="hotelslist" />
     </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import HelloWorld from "@/components/HelloWorld.vue";
+import { namespace } from "vuex-class";
+import Table from "@/components/Table.vue";
+import SearchBar from "@/components/SearchBar.vue";
+
+const Hotels = namespace("Hotels");
+
+import Buefy from "buefy";
+import "buefy/dist/buefy.css";
+import { Hotel } from "../api/HotelApi";
+
+Vue.use(Buefy);
 
 @Component({
     components: {
-        HelloWorld
+        SearchBar,
+        Table
     }
 })
-export default class Home extends Vue {}
+export default class Home extends Vue {
+    @Hotels.State("hotels")
+    private hotelslist!: Array<Hotel>;
+}
 </script>
