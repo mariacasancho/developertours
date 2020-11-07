@@ -6,6 +6,22 @@ export interface Hotel {
     id: string;
     name: string;
     description: string;
+    amenities: Amenities;
+    images: Array<ImageInterface>;
+}
+
+export interface ImageInterface {
+    hires: string;
+    lowres: string;
+}
+
+export interface Amenities {
+    breakfast_included: boolean;
+    free_cancellation: boolean;
+    free_parking: boolean;
+    fitness: boolean;
+    pool: boolean;
+    free_wifi: boolean;
 }
 
 class HotelApi {
