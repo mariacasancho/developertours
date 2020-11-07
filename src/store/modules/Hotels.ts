@@ -1,10 +1,14 @@
 import { VuexModule, Module, Mutation, Action } from 'vuex-module-decorators';
-import HotelApi from '../../api/HotelApi';
+import HotelApi, { Hotel } from '../../api/HotelApi';
 
 @Module({ namespaced: true })
 class Hotels extends VuexModule {
-  public hotels: Array<any> = [];
-  public hotel: any = {};
+  public hotels: Array<Hotel> = [];
+  public hotel: Hotel = {
+    id: '',
+    name: '',
+    description: ''
+  };
 
   @Mutation
   public getHotelsSuccess(getHotel: any): void {
@@ -23,7 +27,11 @@ class Hotels extends VuexModule {
 
   @Mutation
   public getHotelFailure(): void {
-    this.hotel = [];
+    this.hotel = {
+      id: '',
+      name: '',
+      description: ''
+    };
   }
 
   @Action

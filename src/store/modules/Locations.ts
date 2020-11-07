@@ -1,9 +1,9 @@
 import { VuexModule, Module, Mutation, Action } from 'vuex-module-decorators';
-import LocationApi from '@/api/LocationApi';
+import LocationApi, { Location } from '@/api/LocationApi';
 
 @Module({ namespaced: true })
 class Locations extends VuexModule {
-  public locations: Array<any> = [];
+  public locations: Array<Location> = [];
 
   @Mutation
   public getLocationsSuccess(getLocation: any): void {
