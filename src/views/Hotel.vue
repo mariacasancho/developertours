@@ -34,14 +34,9 @@ import { Component, Vue, Prop } from "vue-property-decorator";
 import { namespace } from "vuex-class";
 import Amenities from "@/components/Amenities.vue";
 import Rooms from "@/components/Rooms.vue";
+import { Hotel } from "@/api/HotelApi";
 
 const Hotels = namespace("Hotels");
-
-import Buefy from "buefy";
-import "buefy/dist/buefy.css";
-import { Hotel } from "../api/HotelApi";
-
-Vue.use(Buefy);
 
 @Component({
     components: {
@@ -56,15 +51,13 @@ export default class HotelView extends Vue {
     private hotelDetail!: Hotel;
 
     @Hotels.Action
-    private getHotel!: (id: string) => Array<any>;
+    private getHotel!: (id: string) => Array<Hotel>;
 
     created() {
         this.getHotel(this.id);
-        console.log("created", this.hotelDetail, this.hotelDetail.name);
     }
 
     getImgUrl(id: number) {
-        console.log(this.hotelDetail.images[id], id);
         return this.hotelDetail.images[id].hires;
     }
 }

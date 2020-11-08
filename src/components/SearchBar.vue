@@ -42,7 +42,6 @@ export default class SearchBar extends Vue {
     }
 
     onSearch() {
-        console.log(this.locationItem);
         this.getHotels(this.locationItem.id);
     }
 

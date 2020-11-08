@@ -75,22 +75,6 @@ class Hotels extends VuexModule {
   getHotel(id: string): void {
     HotelApi.getHotel(id).then(
       response => {
-        // const hoteldata: Hotel = {
-        //   amenities: {
-        //     breakfast_included: response.data.amenities.breakfast_included,
-        //     freeCancellation: response.data.amenities.free_cancellation,
-        //     freeParking: response.data.amenities.free_parking,
-        //     fitness: response.data.amenities.fitness,
-        //     pool: response.data.amenities.pool,
-        //     freeWifi: response.data.amenities.free_wifi
-        //   },
-        //   id: response.data.id,
-        //   name: response.data.name,
-        //   description: response.data.description,
-        //   images: response.data.images
-        // };
-
-        // console.log('gethotel', hoteldata);
         this.context.commit('getHotelSuccess', response.data);
         return Promise.resolve(response.data);
       },
