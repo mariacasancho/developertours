@@ -1,7 +1,7 @@
 <template>
-    <div>
-        <h1 class="title">{{this.hotelDetail.name}}</h1>
-        <h2 class="subtitle">{{this.hotelDetail.location.name}}</h2>
+    <div class="hotel">
+        <h1 class="title">{{ this.hotelDetail.name }}</h1>
+        <h2 class="subtitle">{{ this.hotelDetail.location.name }}</h2>
         <b-carousel :indicator-inside="false">
             <b-carousel-item v-for="(item, i) in 5" :key="i">
                 <span class="image">
@@ -15,12 +15,15 @@
             </template>
         </b-carousel>
         <Amenities v-bind:data="this.hotelDetail.amenities" />
-        <div>{{this.hotelDetail.description}}</div>
+        <div>{{ this.hotelDetail.description }}</div>
         <Rooms v-bind:data="this.hotelDetail.rooms" />
     </div>
 </template>
 
 <style>
+.hotel {
+    margin: 20px;
+}
 .is-active .al img {
     filter: grayscale(0%);
 }
@@ -41,8 +44,8 @@ const Hotels = namespace("Hotels");
 @Component({
     components: {
         Amenities,
-        Rooms
-    }
+        Rooms,
+    },
 })
 export default class HotelView extends Vue {
     @Prop() private id = this.$route.params.id;
