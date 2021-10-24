@@ -1,7 +1,11 @@
 <template>
     <div class="home">
         <SearchBar />
-        <Table v-bind:data="hotelslist" />
+        <h2>List of available hotels</h2>
+        <div v-if="hotelslist.length == 0">no list available</div>
+        <div style="margin: 10px">
+            <Table v-bind:data="hotelslist" />
+        </div>
     </div>
 </template>
 
@@ -17,8 +21,8 @@ const Hotels = namespace("Hotels");
 @Component({
     components: {
         SearchBar,
-        Table
-    }
+        Table,
+    },
 })
 export default class Home extends Vue {
     @Hotels.State("hotels")

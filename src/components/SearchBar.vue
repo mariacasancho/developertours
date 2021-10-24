@@ -1,7 +1,10 @@
 <template>
     <div :class="$style.searchBar">
-        <AutocompleteLocations v-bind:data="locationslist" :selectedLocation.sync="locationItem" />
-        <b-button type="is-primary" @click="onSearch">Primary</b-button>
+        <AutocompleteLocations
+            v-bind:data="locationslist"
+            :selectedLocation.sync="locationItem"
+        />
+        <b-button type="is-primary" @click="onSearch">Search</b-button>
     </div>
 </template>
 
@@ -25,8 +28,8 @@ const Hotels = namespace("Hotels");
 
 @Component({
     components: {
-        AutocompleteLocations
-    }
+        AutocompleteLocations,
+    },
 })
 export default class SearchBar extends Vue {
     private locationItem: any;
