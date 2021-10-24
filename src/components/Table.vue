@@ -1,5 +1,10 @@
 <template>
-    <b-table :data="tableData" :narrowed="true" :mobile-cards="false" @click="onRowClick">
+    <b-table
+        :data="tableData"
+        :narrowed="true"
+        :mobile-cards="false"
+        @click="onRowClick"
+    >
         <b-table-column field="id">
             <template v-slot="props">{{ props.row.id }}</template>
         </b-table-column>
